@@ -1,0 +1,206 @@
+{
+  "accuracy_category": 95.0,
+  "accuracy_subcategory": 90.0,
+  "details": [
+    {
+      "id": "001",
+      "subject": "Commande non reçue",
+      "expected_category": "Support client",
+      "predicted_category": "Support client",
+      "category_correct": true,
+      "expected_subcategory": "Suivi commande",
+      "predicted_subcategory": "Réclamation",
+      "subcategory_correct": false
+    },
+    {
+      "id": "002",
+      "subject": "Demande de remboursement urgent",
+      "expected_category": "Support client",
+      "predicted_category": "Support client",
+      "category_correct": true,
+      "expected_subcategory": "Remboursement",
+      "predicted_subcategory": "Remboursement",
+      "subcategory_correct": true
+    },
+    {
+      "id": "003",
+      "subject": "Problème de connexion à mon compte",
+      "expected_category": "Support client",
+      "predicted_category": "Support client",
+      "category_correct": true,
+      "expected_subcategory": "Question technique",
+      "predicted_subcategory": "Question technique",
+      "subcategory_correct": true
+    },
+    {
+      "id": "004",
+      "subject": "Réclamation suite à une mauvaise livraison",
+      "expected_category": "Support client",
+      "predicted_category": "Support client",
+      "category_correct": true,
+      "expected_subcategory": "Réclamation",
+      "predicted_subcategory": "Réclamation",
+      "subcategory_correct": true
+    },
+    {
+      "id": "005",
+      "subject": "Demande de devis pour 50 licences",
+      "expected_category": "Commercial",
+      "predicted_category": "Commercial",
+      "category_correct": true,
+      "expected_subcategory": "Demande de devis",
+      "predicted_subcategory": "Demande de devis",
+      "subcategory_correct": true
+    },
+    {
+      "id": "006",
+      "subject": "Proposition de partenariat commercial",
+      "expected_category": "Commercial",
+      "predicted_category": "Commercial",
+      "category_correct": true,
+      "expected_subcategory": "Partenariat",
+      "predicted_subcategory": "Partenariat",
+      "subcategory_correct": true
+    },
+    {
+      "id": "007",
+      "subject": "Relance devis du 15 avril",
+      "expected_category": "Commercial",
+      "predicted_category": "Commercial",
+      "category_correct": true,
+      "expected_subcategory": "Relance commerciale",
+      "predicted_subcategory": "Relance commerciale",
+      "subcategory_correct": true
+    },
+    {
+      "id": "008",
+      "subject": "Candidature au poste de développeur Python",
+      "expected_category": "RH",
+      "predicted_category": "RH",
+      "category_correct": true,
+      "expected_subcategory": "Candidature",
+      "predicted_subcategory": "Candidature",
+      "subcategory_correct": true
+    },
+    {
+      "id": "009",
+      "subject": "Demande de congé du 10 au 20 juin",
+      "expected_category": "RH",
+      "predicted_category": "RH",
+      "category_correct": true,
+      "expected_subcategory": "Demande de congé",
+      "predicted_subcategory": "Demande de congé",
+      "subcategory_correct": true
+    },
+    {
+      "id": "010",
+      "subject": "Question sur mon contrat de travail",
+      "expected_category": "RH",
+      "predicted_category": "RH",
+      "category_correct": true,
+      "expected_subcategory": "Question contrat",
+      "predicted_subcategory": "Question contrat",
+      "subcategory_correct": true
+    },
+    {
+      "id": "011",
+      "subject": "Facture impayée numéro F-2026-042",
+      "expected_category": "Administratif",
+      "predicted_category": "Administratif",
+      "category_correct": true,
+      "expected_subcategory": "Facture",
+      "predicted_subcategory": "Facture",
+      "subcategory_correct": true
+    },
+    {
+      "id": "012",
+      "subject": "Envoi du contrat de prestation à signer",
+      "expected_category": "Administratif",
+      "predicted_category": "Administratif",
+      "category_correct": true,
+      "expected_subcategory": "Contrat",
+      "predicted_subcategory": "Contrat",
+      "subcategory_correct": true
+    },
+    {
+      "id": "013",
+      "subject": "Information : changement des horaires",
+      "expected_category": "Administratif",
+      "predicted_category": "Administratif",
+      "category_correct": true,
+      "expected_subcategory": "Information générale",
+      "predicted_subcategory": "Information générale",
+      "subcategory_correct": true
+    },
+    {
+      "id": "014",
+      "subject": "Mon colis est arrivé endommagé",
+      "expected_category": "Support client",
+      "predicted_category": "Support client",
+      "category_correct": true,
+      "expected_subcategory": "Réclamation",
+      "predicted_subcategory": "Réclamation",
+      "subcategory_correct": true
+    },
+    {
+      "id": "015",
+      "subject": "Offre de collaboration influenceur",
+      "expected_category": "Commercial",
+      "predicted_category": "Commercial",
+      "category_correct": true,
+      "expected_subcategory": "Partenariat",
+      "predicted_subcategory": "Partenariat",
+      "subcategory_correct": true
+    },
+    {
+      "id": "016",
+      "subject": "Erreur sur ma facture",
+      "expected_category": "Administratif",
+      "predicted_category": "Administratif",
+      "category_correct": true,
+      "expected_subcategory": "Facture",
+      "predicted_subcategory": "Facture",
+      "subcategory_correct": true
+    },
+    {
+      "id": "017",
+      "subject": "Candidature spontanée marketing",
+      "expected_category": "RH",
+      "predicted_category": "RH",
+      "category_correct": true,
+      "expected_subcategory": "Candidature",
+      "predicted_subcategory": "Candidature",
+      "subcategory_correct": true
+    },
+    {
+      "id": "018",
+      "subject": "Application qui plante au démarrage",
+      "expected_category": "Support client",
+      "predicted_category": "Support client",
+      "category_correct": true,
+      "expected_subcategory": "Question technique",
+      "predicted_subcategory": "Question technique",
+      "subcategory_correct": true
+    },
+    {
+      "id": "019",
+      "subject": "Renouvellement contrat annuel",
+      "expected_category": "Commercial",
+      "predicted_category": "Administratif",
+      "category_correct": false,
+      "expected_subcategory": "Demande de devis",
+      "predicted_subcategory": "Contrat",
+      "subcategory_correct": false
+    },
+    {
+      "id": "020",
+      "subject": "Demande d'attestation de travail",
+      "expected_category": "RH",
+      "predicted_category": "RH",
+      "category_correct": true,
+      "expected_subcategory": "Question contrat",
+      "predicted_subcategory": "Question contrat",
+      "subcategory_correct": true
+    }
+  ]
+}

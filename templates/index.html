@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Email AI System</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      border-bottom: 1px solid #334155;
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    header .logo { font-size: 2rem; }
+
+    header h1 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #f1f5f9;
+    }
+
+    header p {
+      font-size: 0.8rem;
+      color: #64748b;
+      margin-top: 2px;
+    }
+
+    .status-dot {
+      width: 10px; height: 10px;
+      background: #22c55e;
+      border-radius: 50%;
+      margin-left: auto;
+      box-shadow: 0 0 8px #22c55e;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 16px;
+      padding: 28px;
+    }
+
+    .card h2 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.85rem;
+      color: #94a3b8;
+      margin-bottom: 6px;
+      margin-top: 14px;
+    }
+
+    input, textarea {
+      width: 100%;
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 10px;
+      padding: 12px 14px;
+      color: #e2e8f0;
+      font-size: 0.9rem;
+      font-family: inherit;
+      resize: vertical;
+      transition: border-color 0.2s;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #6366f1;
+    }
+
+    textarea { min-height: 140px; }
+
+    .btn {
+      width: 100%;
+      margin-top: 20px;
+      padding: 14px;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.1s;
+    }
+
+    .btn:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .spinner {
+      display: none;
+      width: 20px; height: 20px;
+      border: 3px solid #ffffff44;
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .result-section { display: none; }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      margin: 3px;
+    }
+
+    .badge-category { background: #6366f120; color: #818cf8; border: 1px solid #6366f140; }
+    .badge-sub      { background: #8b5cf620; color: #a78bfa; border: 1px solid #8b5cf640; }
+    .badge-high     { background: #ef444420; color: #f87171; border: 1px solid #ef444440; }
+    .badge-medium   { background: #f59e0b20; color: #fbbf24; border: 1px solid #f59e0b40; }
+    .badge-low      { background: #22c55e20; color: #4ade80; border: 1px solid #22c55e40; }
+
+    .intent-box {
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 10px;
+      padding: 14px;
+      margin-top: 14px;
+      font-size: 0.88rem;
+      color: #cbd5e1;
+      line-height: 1.5;
+    }
+
+    .response-box {
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 10px;
+      padding: 16px;
+      margin-top: 14px;
+      font-size: 0.88rem;
+      color: #cbd5e1;
+      line-height: 1.8;
+      white-space: pre-wrap;
+      max-height: 320px;
+      overflow-y: auto;
+    }
+
+    .copy-btn {
+      display: block;
+      margin-top: 10px;
+      padding: 8px 16px;
+      background: #334155;
+      color: #94a3b8;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .copy-btn:hover { background: #475569; color: #e2e8f0; }
+
+    .stats-bar {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .stat-card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .stat-card .num {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #818cf8;
+    }
+
+    .stat-card .lbl {
+      font-size: 0.78rem;
+      color: #64748b;
+      margin-top: 4px;
+    }
+
+    .error-box {
+      background: #ef444420;
+      border: 1px solid #ef444440;
+      border-radius: 10px;
+      padding: 14px;
+      color: #f87171;
+      font-size: 0.85rem;
+      margin-top: 14px;
+      display: none;
+    }
+
+    @media (max-width: 700px) {
+      .container { grid-template-columns: 1fr; }
+      .stats-bar { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">🤖</div>
+  <div>
+    <h1>Email AI System</h1>
+    <p>Traitement automatique des emails · LLM local · Mistral via Ollama</p>
+  </div>
+  <div class="status-dot" title="API en ligne"></div>
+</header>
+
+<div class="container">
+
+  <!-- Stats -->
+  <div class="stats-bar">
+    <div class="stat-card">
+      <div class="num" id="stat-total">0</div>
+      <div class="lbl">Emails analysés</div>
+    </div>
+    <div class="stat-card">
+      <div class="num" id="stat-high">0</div>
+      <div class="lbl">Priorité haute</div>
+    </div>
+    <div class="stat-card">
+      <div class="num" id="stat-support">0</div>
+      <div class="lbl">Support client</div>
+    </div>
+    <div class="stat-card">
+      <div class="num" id="stat-time">—</div>
+      <div class="lbl">Dernier temps (s)</div>
+    </div>
+  </div>
+
+  <!-- Formulaire -->
+  <div class="card">
+    <h2>📧 Saisir un email</h2>
+
+    <label>Sujet de l'email</label>
+    <input type="text" id="subject" placeholder="Ex: Problème avec ma commande..." />
+
+    <label>Corps de l'email</label>
+    <textarea id="body" placeholder="Collez ici le contenu de l'email..."></textarea>
+
+    <button class="btn" id="analyzeBtn" onclick="analyzeEmail()">
+      <span id="btnText">⚡ Analyser avec Mistral</span>
+      <div class="spinner" id="spinner"></div>
+    </button>
+
+    <div class="error-box" id="errorBox"></div>
+
+    <!-- Exemples rapides -->
+    <div style="margin-top:18px">
+      <p style="font-size:0.78rem;color:#64748b;margin-bottom:8px">Exemples rapides :</p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px">
+        <button class="copy-btn" onclick="loadExample('commande')">📦 Commande</button>
+        <button class="copy-btn" onclick="loadExample('devis')">💼 Devis</button>
+        <button class="copy-btn" onclick="loadExample('candidature')">👤 Candidature</button>
+        <button class="copy-btn" onclick="loadExample('facture')">🧾 Facture</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Résultats -->
+  <div class="card">
+    <h2>📊 Résultats de l'analyse</h2>
+
+    <div id="placeholder" style="color:#475569;font-size:0.9rem;margin-top:40px;text-align:center">
+      <div style="font-size:2.5rem;margin-bottom:12px">🔍</div>
+      Saisissez un email et cliquez sur Analyser
+    </div>
+
+    <div class="result-section" id="results">
+      <div style="margin-bottom:14px">
+        <span class="badge badge-category" id="res-category">—</span>
+        <span class="badge badge-sub" id="res-subcategory">—</span>
+        <span class="badge" id="res-priority">—</span>
+      </div>
+
+      <label style="margin-top:0">Intention détectée</label>
+      <div class="intent-box" id="res-intent">—</div>
+
+      <label>Réponse suggérée par l'IA</label>
+      <div class="response-box" id="res-response">—</div>
+      <button class="copy-btn" onclick="copyResponse()">📋 Copier la réponse</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  let stats = { total: 0, high: 0, support: 0 };
+
+  const examples = {
+    commande: {
+      subject: "Ma commande n'est pas arrivée",
+      body: "Bonjour, j'ai passé une commande il y a 3 semaines (réf: CMD-789) et je n'ai toujours rien reçu. Pouvez-vous me donner des nouvelles ?"
+    },
+    devis: {
+      subject: "Demande de devis pour 50 licences",
+      body: "Bonjour, notre entreprise souhaite acquérir 50 licences de votre logiciel. Pourriez-vous nous faire parvenir un devis détaillé avec les tarifs dégressifs ?"
+    },
+    candidature: {
+      subject: "Candidature au poste de développeur Python",
+      body: "Bonjour, je me permets de vous adresser ma candidature pour le poste de développeur Python senior publié sur LinkedIn. Veuillez trouver ci-joint mon CV."
+    },
+    facture: {
+      subject: "Facture impayée numéro F-2026-042",
+      body: "Bonjour, nous constatons que la facture numéro F-2026-042 d'un montant de 3 500 euros reste impayée. Merci de régulariser cette situation."
+    }
+  };
+
+  function loadExample(key) {
+    document.getElementById('subject').value = examples[key].subject;
+    document.getElementById('body').value = examples[key].body;
+  }
+
+  async function analyzeEmail() {
+    const subject = document.getElementById('subject').value.trim();
+    const body = document.getElementById('body').value.trim();
+    const errorBox = document.getElementById('errorBox');
+
+    if (!subject || !body) {
+      errorBox.textContent = "⚠️ Veuillez remplir le sujet et le corps de l'email.";
+      errorBox.style.display = 'block';
+      return;
+    }
+
+    errorBox.style.display = 'none';
+    setLoading(true);
+
+    const start = Date.now();
+
+    try {
+      const res = await fetch('/respond', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ subject, body })
+      });
+
+      if (!res.ok) throw new Error(`Erreur serveur: ${res.status}`);
+
+      const data = await res.json();
+      const elapsed = ((Date.now() - start) / 1000).toFixed(1);
+
+      displayResults(data, elapsed);
+      updateStats(data.classification);
+
+    } catch (err) {
+      errorBox.textContent = `❌ Erreur : ${err.message}. Vérifiez qu'Ollama est lancé (ollama serve).`;
+      errorBox.style.display = 'block';
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  function displayResults(data, elapsed) {
+    const c = data.classification;
+    const priority = c.priority || 'medium';
+
+    document.getElementById('res-category').textContent = c.category || '—';
+    document.getElementById('res-subcategory').textContent = c.subcategory || '—';
+
+    const pBadge = document.getElementById('res-priority');
+    pBadge.textContent = priority === 'high' ? '🔴 Haute' : priority === 'medium' ? '🟡 Moyenne' : '🟢 Basse';
+    pBadge.className = `badge badge-${priority}`;
+
+    document.getElementById('res-intent').textContent = c.intent || '—';
+    document.getElementById('res-response').textContent = data.suggested_response || '—';
+    document.getElementById('stat-time').textContent = elapsed + 's';
+
+    document.getElementById('placeholder').style.display = 'none';
+    document.getElementById('results').style.display = 'block';
+  }
+
+  function updateStats(classification) {
+    stats.total++;
+    if (classification.priority === 'high') stats.high++;
+    if (classification.category === 'Support client') stats.support++;
+
+    document.getElementById('stat-total').textContent = stats.total;
+    document.getElementById('stat-high').textContent = stats.high;
+    document.getElementById('stat-support').textContent = stats.support;
+  }
+
+  function setLoading(loading) {
+    const btn = document.getElementById('analyzeBtn');
+    const spinner = document.getElementById('spinner');
+    const btnText = document.getElementById('btnText');
+
+    btn.disabled = loading;
+    spinner.style.display = loading ? 'block' : 'none';
+    btnText.style.display = loading ? 'none' : 'inline';
+  }
+
+  function copyResponse() {
+    const text = document.getElementById('res-response').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = event.target;
+      btn.textContent = '✅ Copié !';
+      setTimeout(() => btn.textContent = '📋 Copier la réponse', 2000);
+    });
+  }
+</script>
+
+</body>
+</html>

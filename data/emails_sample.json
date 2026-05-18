@@ -1,0 +1,142 @@
+[
+  {
+    "id": "001",
+    "subject": "Commande non reçue",
+    "body": "Bonjour, j'ai passé une commande il y a 3 semaines (réf: CMD-789) et je n'ai toujours rien reçu. Pouvez-vous me donner des nouvelles ?",
+    "expected_category": "Support client",
+    "expected_subcategory": "Suivi commande"
+  },
+  {
+    "id": "002",
+    "subject": "Demande de remboursement urgent",
+    "body": "Bonjour, j'ai reçu un produit défectueux et je souhaite être remboursé immédiatement. Le produit ne fonctionne pas du tout.",
+    "expected_category": "Support client",
+    "expected_subcategory": "Remboursement"
+  },
+  {
+    "id": "003",
+    "subject": "Problème de connexion à mon compte",
+    "body": "Bonjour, je n'arrive pas à me connecter à mon espace client depuis hier. J'ai essayé de réinitialiser mon mot de passe mais ça ne fonctionne pas.",
+    "expected_category": "Support client",
+    "expected_subcategory": "Question technique"
+  },
+  {
+    "id": "004",
+    "subject": "Réclamation suite à une mauvaise livraison",
+    "body": "Bonjour, j'ai reçu une commande qui ne correspond pas à ce que j'avais commandé. J'ai commandé un article rouge et j'ai reçu un article bleu.",
+    "expected_category": "Support client",
+    "expected_subcategory": "Réclamation"
+  },
+  {
+    "id": "005",
+    "subject": "Demande de devis pour 50 licences",
+    "body": "Bonjour, notre entreprise souhaite acquérir 50 licences de votre logiciel. Pourriez-vous nous faire parvenir un devis détaillé avec les tarifs dégressifs ?",
+    "expected_category": "Commercial",
+    "expected_subcategory": "Demande de devis"
+  },
+  {
+    "id": "006",
+    "subject": "Proposition de partenariat commercial",
+    "body": "Bonjour, je représente la société TechPartner. Nous souhaitons explorer une opportunité de partenariat stratégique avec votre entreprise. Seriez-vous disponible pour un appel ?",
+    "expected_category": "Commercial",
+    "expected_subcategory": "Partenariat"
+  },
+  {
+    "id": "007",
+    "subject": "Relance devis du 15 avril",
+    "body": "Bonjour, je me permets de revenir vers vous concernant notre devis envoyé le 15 avril. Avez-vous eu l'occasion de l'étudier ? Nous restons disponibles pour toute question.",
+    "expected_category": "Commercial",
+    "expected_subcategory": "Relance commerciale"
+  },
+  {
+    "id": "008",
+    "subject": "Candidature au poste de développeur Python",
+    "body": "Bonjour, je me permets de vous adresser ma candidature pour le poste de développeur Python senior publié sur LinkedIn. Veuillez trouver ci-joint mon CV et ma lettre de motivation.",
+    "expected_category": "RH",
+    "expected_subcategory": "Candidature"
+  },
+  {
+    "id": "009",
+    "subject": "Demande de congé du 10 au 20 juin",
+    "body": "Bonjour, je souhaite poser des congés du 10 au 20 juin inclus, soit 10 jours ouvrables. Pourriez-vous valider cette demande ? Merci d'avance.",
+    "expected_category": "RH",
+    "expected_subcategory": "Demande de congé"
+  },
+  {
+    "id": "010",
+    "subject": "Question sur mon contrat de travail",
+    "body": "Bonjour, j'aurais besoin d'éclaircissements sur la clause de non-concurrence présente dans mon contrat. Pouvez-vous me préciser sa durée et son périmètre géographique ?",
+    "expected_category": "RH",
+    "expected_subcategory": "Question contrat"
+  },
+  {
+    "id": "011",
+    "subject": "Facture impayée numéro F-2026-042",
+    "body": "Bonjour, nous constatons que la facture numéro F-2026-042 d'un montant de 3 500 euros émise le 1er avril reste impayée à ce jour. Merci de régulariser cette situation.",
+    "expected_category": "Administratif",
+    "expected_subcategory": "Facture"
+  },
+  {
+    "id": "012",
+    "subject": "Envoi du contrat de prestation à signer",
+    "body": "Bonjour, veuillez trouver en pièce jointe le contrat de prestation de services pour l'année 2026. Merci de le retourner signé avant le 30 mai.",
+    "expected_category": "Administratif",
+    "expected_subcategory": "Contrat"
+  },
+  {
+    "id": "013",
+    "subject": "Information : changement des horaires",
+    "body": "Bonjour à tous, nous vous informons que les horaires d'ouverture de nos bureaux changent à partir du 1er juin. Les nouveaux horaires seront de 8h à 17h du lundi au vendredi.",
+    "expected_category": "Administratif",
+    "expected_subcategory": "Information générale"
+  },
+  {
+    "id": "014",
+    "subject": "Mon colis est arrivé endommagé",
+    "body": "Bonjour, j'ai reçu mon colis aujourd'hui mais il était complètement écrasé. Le contenu est abîmé. Je souhaite un remplacement ou un remboursement.",
+    "expected_category": "Support client",
+    "expected_subcategory": "Réclamation"
+  },
+  {
+    "id": "015",
+    "subject": "Offre de collaboration influenceur",
+    "body": "Bonjour, je suis influenceur avec 50 000 abonnés sur Instagram dans le domaine lifestyle. Je souhaite vous proposer un partenariat pour promouvoir vos produits.",
+    "expected_category": "Commercial",
+    "expected_subcategory": "Partenariat"
+  },
+  {
+    "id": "016",
+    "subject": "Erreur sur ma facture",
+    "body": "Bonjour, j'ai reçu ma facture du mois d'avril et je constate une erreur : vous m'avez facturé 2 unités alors que je n'en ai commandé qu'une seule.",
+    "expected_category": "Administratif",
+    "expected_subcategory": "Facture"
+  },
+  {
+    "id": "017",
+    "subject": "Candidature spontanée marketing",
+    "body": "Bonjour, je me permets de vous adresser une candidature spontanée pour un poste en marketing digital. Passionné par le secteur, je pense pouvoir apporter une réelle valeur ajoutée.",
+    "expected_category": "RH",
+    "expected_subcategory": "Candidature"
+  },
+  {
+    "id": "018",
+    "subject": "Application qui plante au démarrage",
+    "body": "Bonjour, votre application mobile plante systématiquement dès que j'essaie de l'ouvrir sur mon iPhone 14. J'ai déjà essayé de la réinstaller sans succès.",
+    "expected_category": "Support client",
+    "expected_subcategory": "Question technique"
+  },
+  {
+    "id": "019",
+    "subject": "Renouvellement contrat annuel",
+    "body": "Bonjour, notre contrat annuel arrive à échéance le 30 juin. Pourriez-vous nous faire parvenir une proposition de renouvellement avec les nouvelles conditions tarifaires ?",
+    "expected_category": "Commercial",
+    "expected_subcategory": "Demande de devis"
+  },
+  {
+    "id": "020",
+    "subject": "Demande d'attestation de travail",
+    "body": "Bonjour, j'aurais besoin d'une attestation de travail pour la banque. Pourriez-vous me la préparer et me l'envoyer dans les meilleurs délais ?",
+    "expected_category": "RH",
+    "expected_subcategory": "Question contrat"
+  }
+]
