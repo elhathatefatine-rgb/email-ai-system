@@ -6,6 +6,7 @@ from app.classifier import classify_email
 from app.responder import generate_response
 from app.database import create_tables, get_db, EmailAnalysis, EmailLog
 import time
+from app.nlp_processor import preprocess_email
 
 app = FastAPI(
     title="Email AI System",
@@ -26,6 +27,29 @@ async def root():
 @app.get("/health")
 async def health():
     return {"status": "ok", "message": "API opérationnelle", "version": "2.0.0"}
+
+@app.post("/analyze")
+async def analyze(email: EmailIn, db: Session = Depends(get_db)):
+    try:
+        # Prétraitement NLP
+        nlp_result = preprocess_email(email.subject, email.body)
+        
+        # Classification LLM
+        start = time.time()
+        classification = await classify_email(email.subject, email.body)
+        elapsed = round(time.time() - start, 2)
+
+        # Fusionner priorité NLP + LLM
+        if nlp_result["is_urgent"]:
+            classification["priority"] = "high"
+
+        return {
+            "nlp_preprocessing": nlp_result,
+            "classification": classification,
+            "processing_time": elapsed
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/classify")
 async def classify(email: EmailIn, db: Session = Depends(get_db)):
