@@ -1,0 +1,18 @@
+{
+  "LLM Mistral": {
+    "accuracy": 95.0,
+    "f1_macro": 90.0
+  },
+  "Logistic Regression": {
+    "accuracy": 100.0,
+    "f1_macro": 100.0
+  },
+  "SVM": {
+    "accuracy": 100.0,
+    "f1_macro": 100.0
+  },
+  "Random Forest": {
+    "accuracy": 100.0,
+    "f1_macro": 100.0
+  }
+}
